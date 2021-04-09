@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b0ec421e-1a73-48ab-ae01-40f390d125fd" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dataweave-customeFunctionFlow" doc:id="c780a448-7548-4fb2-874c-b203611bcf8a" >
+		<http:listener doc:name="Listener" doc:id="f971bfc6-31a5-48a8-a4f1-ed610d674f35" config-ref="HTTP_Listener_config" path="/customFunction"/>
+		<ee:transform doc:name="Transform Message" doc:id="3cf3c06f-a0a8-4013-a593-164e4bd589b6" >
+			<ee:message >
+				<ee:set-payload resource="productxml.dwl" />
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable resource="productName.dwl" variableName="productName" />
+			</ee:variables>
+		</ee:transform>
+	</flow>
+</mule>

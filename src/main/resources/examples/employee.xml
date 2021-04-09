@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<employee>
+  <EmpID>565</EmpID>
+  <EmpName>adis</EmpName>
+  <EmpStatus>A</EmpStatus>
+  <EmpEmail>Addis@yahoo.com</EmpEmail>
+</employee>
